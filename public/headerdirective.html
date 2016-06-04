@@ -1,0 +1,28 @@
+<header style="background-color: #adadad; padding-right: 10px;padding-left: 10px">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Affixus</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav" style="cursor: pointer;">
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom"
+                   title="Register, if not a existing member" href="#/" style="color:#fff;">Regester</a></li>
+            <li><a type="submit" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom"
+                   title="Click here to Log in" href="#/login" ng-if="lin" style="color:#fff;">LOG IN</a></li>
+            <li><a type="submit" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom"
+                   title="Click here to Log out" href="#/login" ng-if="!lin" style="color:#fff;">LOG Out</a></li>
+            <li><a type="submit" class="btn btn-info" data-toggle="tooltip" data-placement="bottom"
+                   title="Click here to Log in" ng-click="condidate()" style="color:#fff;">Condidate</a></li>
+            <li><a type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom"
+                   title="Click here to Log in" ng-click="admin()" style="color:#fff;">ADMIN</a></li>
+
+        </ul>
+    </div>
+</header>

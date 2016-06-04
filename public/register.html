@@ -1,3 +1,5 @@
+<header-directive></header-directive>
+
 <div class="row">
     <div class="col-md-2">
     </div>
@@ -47,6 +49,23 @@
 
             <button type="submit" class="btn btn-info col-sm-offset-3" style="margin-bottom: 17px" ng-click="submitdata()">Submit</button>
         </form>
+
+        <table class="table" style="background-color: #d6e9c6; border-radius: 10px">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Type</th>
+                <th>Subject</th>
+            </tr>
+            <tr ng-repeat="x in $scope.user">
+                <th>x.name</th>
+                <th>x.email</th>
+                <th>x.mobile</th>
+                <th>x.type</th>
+                <th>x.subject</th>
+            </tr>
+        </table>
 
     </div>
     <div class="col-md-2">

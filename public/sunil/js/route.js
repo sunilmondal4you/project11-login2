@@ -22,7 +22,7 @@ app.config(function($routeProvider){
         .when('/admin', {
             templateUrl : 'admin.html',
             controller : 'admin'
-        })
+        });
 
 
 });
