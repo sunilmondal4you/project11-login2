@@ -22,11 +22,40 @@ var app=angular.module('app');
         $scope.user={};
         myservices.userarry.push($scope.user);
         $scope.lin=true;
-        $scope.submitdata=function(){
+        $scope.logedin=false;
+        $scope.registered=true;
 
-            $cookies.putObject($scope.user.email, $scope.user);
-            $window.location.reload();
-            alert("You are successfully register.");
+        var keyval=[];
+        $.each($cookies.getAll(), function(key,obj) {
+            keyval.push(key);
+        });
+        var register;
+        $scope.submitdata=function() {
+
+            var registeremail = $scope.user.email;
+            for (i = 0; i < keyval.length; i++) {
+                if (registeremail === keyval[i]) {
+                    register=true;
+                    $window.location.reload();
+                }
+                else {
+                    register=false;
+                    $cookies.putObject($scope.user.email, $scope.user);
+                    $window.location.reload();
+                };
+            };
+            if(keyval.length==0){
+                register=false;
+                $cookies.putObject($scope.user.email, $scope.user);
+                $window.location.reload();
+            }
+            if(register){
+                alert("You are already register in cookies.");
+            };
+            if(!register){
+                alert("You are successfully register.");
+            };
+
         };
 
     });
@@ -34,46 +63,60 @@ var app=angular.module('app');
     app.controller("login",function($scope,$cookies,$window,myservices,$location){
         $scope.user2={};
         $scope.lin=true;
-        
+        $scope.logedin=false;
+        $scope.registered=true;
+
+
         var keyval=[];
         var objval=[];
         $.each($cookies.getAll(), function(key,obj) {
 
             keyval.push(key);
-            objval.push(obj)
+            objval.push(obj);
         });
 
-        $scope.login=function() {
+        $scope.login = function() {
             var email = $scope.user2.email;
-            for (i = 0; i <keyval.length; i++) {
-                // debugger;
-                if (email === keyval[i]) {
+            var password = $scope.user2.password;
+
+            for (i = 0; i <objval.length; i++) {
+                var detail = JSON.parse(objval[i]);
+                if (email === detail.email && password === detail.password) {
                     login = true;
                     console.log("user detected");
+                        debugger;
+                    if(detail.type==="Condidate") {
+                        login = true;
+                        console.log("user detected");
 
-                    myservices.putLoginSuccess();
-                    
-                    $location.path('/condidate');
+                        myservices.putLoginSuccess();
+                        $location.path('/condidate');
+
+                    }else {
+                        login = true;
+                        myservices.putLoginSuccess();
+                        $location.path('/admin');
+                    };
                 }
                 else {
                     console.log("user Not Match");
                     $window.location.reload();
-                   // alert("you are not yet register");
                 };
             };
-
-
             if(!login){
                 alert("you are not yet register");
-            }
+            };
 
         };
 
     });
 
-    app.controller("condidate",function($scope,$cookies,$location){
+    app.controller("condidate",function($scope,$cookies,$location,myservices){
         $scope.lin=false;
-        
+        $scope.logedin=false;
+        $scope.registered=false;
+
+
         $scope.condidate=function () {
             debugger;
             var loginval = $cookies.getObject("loginsuccess");
@@ -88,8 +131,11 @@ var app=angular.module('app');
 
     });
 
-    app.controller("admin", function($scope){
-        $scope.lin=true;
+    app.controller("admin", function($scope,$cookies,$location,myservices){
+        $scope.lin=false;
+        $scope.logedin=false;
+        $scope.registered=false;
+
 
         $scope.admin=function () {
 

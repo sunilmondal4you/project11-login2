@@ -13,15 +13,15 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom"
-                   title="Register, if not a existing member" href="#/" style="color:#fff;">Regester</a></li>
+                   title="Register, if not a existing member" href="#/" ng-if="registered" style="color:#fff;">Regester</a></li>
             <li><a type="submit" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom"
                    title="Click here to Log in" href="#/login" ng-if="lin" style="color:#fff;">LOG IN</a></li>
             <li><a type="submit" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom"
                    title="Click here to Log out" href="#/login" ng-if="!lin" style="color:#fff;">LOG Out</a></li>
             <li><a type="submit" class="btn btn-info" data-toggle="tooltip" data-placement="bottom"
-                   title="Click here to Log in" ng-click="condidate()" style="color:#fff;">Condidate</a></li>
+                   title="Click here to Log in" ng-click="condidate()" ng-if="logedin" style="color:#fff;">Condidate</a></li>
             <li><a type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom"
-                   title="Click here to Log in" ng-click="admin()" style="color:#fff;">ADMIN</a></li>
+                   title="Click here to Log in" ng-click="admin()" ng-if="logedin" style="color:#fff;">ADMIN</a></li>
 
         </ul>
     </div>
